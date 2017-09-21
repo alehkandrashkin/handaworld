@@ -278,22 +278,22 @@ Bar graph on left
     left:-7px;
     opacity: 0.9;
 }
-#barGraph .import.ammo {
+#barGraph .import.cat3 {
 	fill: 					#44B2D4;
 }
-#barGraph .import.civ {
+#barGraph .import.cat2 {
 	fill: 					#4679C1;
 }
-#barGraph .import.mil {
+#barGraph .import.cat1 {
 	fill:					#1658B2;
 }
-#barGraph .export.ammo {
+#barGraph .export.cat3 {
 	fill: 					#FFA90B;
 }
-#barGraph .export.civ {
+#barGraph .export.cat2 {
 	fill: 					#FF7018;
 }
-#barGraph .export.mil {
+#barGraph .export.cat1 {
 	fill:					#E83E0A;
 }
 #barGraph .importLabel text,#barGraph .exportLabel text {
@@ -476,7 +476,7 @@ Bar graph on left
 #importExportBtns .imports {
     margin-bottom:      5px;
 }
-#importExportBtns .mil, #importExportBtns .civ {
+#importExportBtns .cat1, #importExportBtns .cat2 {
     margin-right:       5px;
 }
 #importExportBtns .imex .check {
@@ -485,40 +485,40 @@ Bar graph on left
     background: #262626 url('importExportIcons.png') 0 0 no-repeat;
     margin: 6px auto;
 }
-#importExportBtns .imports .mil .check {
+#importExportBtns .imports .cat1 .check {
     background-position: 0px 0px;
 }
-#importExportBtns .imports .mil .check.inactive {
+#importExportBtns .imports .cat1 .check.inactive {
     background-position: 0px -16px;
 }
-#importExportBtns .imports .civ .check {
+#importExportBtns .imports .cat2 .check {
     background-position: -16px 0px;
 }
-#importExportBtns .imports .civ .check.inactive {
+#importExportBtns .imports .cat2 .check.inactive {
     background-position: -16px -16px;
 }
-#importExportBtns .imports .ammo .check {
+#importExportBtns .imports .cat3 .check {
     background-position: -32px 0px;
 }
-#importExportBtns .imports .ammo .check.inactive {
+#importExportBtns .imports .cat3 .check.inactive {
     background-position: -32px -16px;
 }
-#importExportBtns .exports .mil .check {
+#importExportBtns .exports .cat1 .check {
     background-position: -48px 0px;
 }
-#importExportBtns .exports .mil .check.inactive {
+#importExportBtns .exports .cat1 .check.inactive {
     background-position: -48px -16px;
 }
-#importExportBtns .exports .civ .check {
+#importExportBtns .exports .cat2 .check {
     background-position: -64px 0px;
 }
-#importExportBtns .exports .civ .check.inactive {
+#importExportBtns .exports .cat2 .check.inactive {
     background-position: -64px -16px;
 }
-#importExportBtns .exports .ammo .check {
+#importExportBtns .exports .cat3 .check {
     background-position: -80px 0px;
 }
-#importExportBtns .exports .ammo .check.inactive {
+#importExportBtns .exports .cat3 .check.inactive {
     background-position: -80px -16px;
 }
 
@@ -581,6 +581,48 @@ Bar graph on left
 }
 
 
+#countryContainer {
+    display: none;
+    position: absolute;
+    top: 200px;
+    width: 350px;
+    right: 28px;
+    color: white;
+}
+#countryBox {
+    width: 288px;
+    padding: 20px 30px;
+    background: #323232;
+}
+#countryBox .title {
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-family: RopaSans;
+    font-size: 20px;
+}
+#countryContainer .arrowLeft {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid #323232;
+    margin-left: 293px;
+}
+#countryBox .text {
+    font-family: Roboto;
+    font-size: 15px;
+}
+#countryBox a {
+    text-transform: none;
+    font-size: 15px;
+    font-family: Roboto;
+    font-weight: bold;
+    color: #FFA90B;
+}
+#countryBox a:hover {
+    text-decoration: underline;
+}
+
 /* Small size */
 @media all and (max-width: 1395px) {
     #importExportBtns {
@@ -604,13 +646,13 @@ Bar graph on left
         margin-top: -2px;
     }
     
-    #importExportBtns .typeLabels .mil {
+    #importExportBtns .typeLabels .cat1 {
         margin-left: 8px;
     }
-    #importExportBtns .typeLabels .civ {
+    #importExportBtns .typeLabels .cat2 {
         margin-left: 2px;
     }
-    #importExportBtns .typeLabels .ammo {
+    #importExportBtns .typeLabels .cat3 {
         margin-left: -1px;
     }
 }

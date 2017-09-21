@@ -48,6 +48,7 @@ var d3Graphs = {
         this.showHud();
         this.drawBarGraph();
         this.drawHistogram();
+        d3Graphs.updateCountryBox();
     },
     showHud: function() {
         if(this.inited) return;
@@ -93,6 +94,34 @@ var d3Graphs = {
     },
     toggleAboutBox:function() {
         $("#aboutContainer").toggle();
+    },
+    updateCountryBox:function() {
+        $("#countryContainer").toggle();
+        if(selectedCountry != null) {
+            var history = getHistoricalData(selectedCountry);
+            $("#countryBoxTitle").text(selectedCountry.countryName);
+            var ex = "";
+            var imp = "";
+            var name = "";
+            var category = "";
+
+            for (var i = 0; i < history.length; i++) {
+                var obj = history[i];
+                ex+=obj.exports;
+                ex+=" ";
+                imp+=obj.imports;
+                imp+=" ";
+                name+=obj.name;
+                name+=" ";
+                category+=obj.categoryName;
+                category+=" ";
+            }
+
+            $("#countryBoxExport").text(ex);
+            $("#countryBoxImport").text(imp);
+            $("#countryBoxProjectName").text(name);
+            $("#countryBoxCategory").text(category);
+        }
     },
     clickTimeline:function() {
         var year = $(this).html();
@@ -174,7 +203,7 @@ var d3Graphs = {
         if(typeof countryData[country] == 'undefined') {
             return;
         }
-        
+
         //exports first
         var exportArray = []
         var exportBtns = $("#importExportBtns .exports>div").not(".label");
@@ -300,7 +329,7 @@ var d3Graphs = {
         if(startingExportIndex != numHistory) {
             exportArray.push({x: startingExportIndex, y: 0});
         }
-        for(var i = startingExportIndex + 1; i < numHistory; i++) {    
+        for(var i = startingExportIndex; i < numHistory; i++) {
             var exportPrev = historical[startingExportIndex].exports;
             var exportCur = historical[i].exports;
             var exportDiff = (exportCur - exportPrev) / exportPrev * 100;
@@ -322,7 +351,7 @@ var d3Graphs = {
         this.setHistogramData();
         
         this.histogramYScale = d3.scale.linear().domain([this.histogramAbsMax,-this.histogramAbsMax]).range([0, this.histogramHeight - this.histogramVertPadding*2]);
-        var maxX = selectedCountry.summary.historical.length - 1;
+        var maxX = selectedCountry.summary.historical.length-1;
         this.histogramXScale = d3.scale.linear().domain([0,maxX]).range([0, this.histogramWidth - this.histogramLeftPadding - this.histogramRightPadding]);
         
         var tickData = this.histogramYScale.ticks(4);
@@ -641,7 +670,7 @@ var d3Graphs = {
                 var textLabel = importLabel.append('text').text(function(d) {
                     return reverseWeaponLookup[d.type].split(' ')[0].toUpperCase();
                 }).attr('text-anchor','end').attr('y',8).attr('class',function(d) { return 'import '+d.type});
-                var weaponLabel  =importLabel.append('text').text('WEAPONS').attr('text-anchor','end').attr('y',21)
+                var weaponLabel  =importLabel.append('text').text('projects').attr('text-anchor','end').attr('y',21)
                     .attr('class',function(d) { return'import '+d.type} );
                 labelHeight = fontSizeInterpolater((data.amount-minImExAmount)/(maxImExAmount-minImExAmount));
                 labelBGYPos = -labelHeight - 7;
@@ -730,7 +759,7 @@ var d3Graphs = {
                 var textLabel = exportLabel.append('text').text(function(d) {
                     return reverseWeaponLookup[d.type].split(' ')[0].toUpperCase();
                 }).attr('text-anchor','start').attr('y',8).attr('class',function(d) { return 'export '+d.type});
-                var weaponLabel  =exportLabel.append('text').text('WEAPONS').attr('text-anchor','start').attr('y',21)
+                var weaponLabel  =exportLabel.append('text').text('projects').attr('text-anchor','start').attr('y',21)
                     .attr('class',function(d) { return'export '+d.type} );
                 labelHeight = fontSizeInterpolater((data.amount-minImExAmount)/(maxImExAmount-minImExAmount));
                 labelBGYPos = -labelHeight - 7;

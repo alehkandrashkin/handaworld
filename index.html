@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<title>Interactive Globe: Small Arms Imports &amp; Exports</title>
+		<title>Handa's World</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="style.css">
@@ -11,7 +11,7 @@
 	<body onload="start()" id="dataviz" class="">
 		<div id="wrapper">
 		<div id="loading">
-			<h2>Loading Small Arms and Ammunition Trade Data from 1992 to 2010. Please wait...</h2>
+			<h2>Handa World. Please wait...</h2>
 		</div>
 
 		<div >
@@ -141,14 +141,14 @@
 
 		<!-- All other hud can go here-->
         <div id="hudHeader" class="overlayCountries noPointer">
-            <h1 class="noPointer">Small Arms and Ammunition — Imports & Exports
-                <div class="subtitle">An interactive visualization of government-authorized small arms and ammunition transfers from 1992 to 2010. </div>
+            <h1 class="noPointer">Handa's World 
+                <div class="subtitle">An interactive visualization of all the projects funded and supported by The Handa Foundation </div>
 			</h1>
         </div>
 
 		<div class="overlayCountries noPointer" id="hudButtons">
             <input type="button" value="SEARCH" class="searchBtn armsBtn pointer">
-            <input type="text" name="country" class="countryTextInput pointer noMapDrag" value="UNITED STATES">
+            <input type="text" name="country" class="countryTextInput pointer noMapDrag" value="JAPAN">
             <input type="button" value="—" class="zoomBtn zoomOutBtn armsBtn pointer noMapDrag">
             <input type="button" value="+" class="zoomBtn zoomInBtn armsBtn pointer noMapDrag">
             <input type="button" value="ABOUT" class="aboutBtn armsBtn pointer"><br class="clear" />
@@ -189,20 +189,20 @@
         <div id="graphIcon" class="overlayCountries"></div>
         <div id="importExportBtns" class="overlayCountries">
             <div class="typeLabels">
-                <div class="mil">Military</div>
-                <div class="civ">Civilian</div>
-                <div class="ammo">Ammo</div><br class="clear">
+                <div class="cat1">Cat1</div>
+                <div class="cat2">Cat2</div>
+                <div class="cat3">Cat3</div><br class="clear">
             </div>
             <div class="imports imex">
-                <div class="mil"><div class="check"></div></div>
-                <div class="civ"><div class="check"></div></div>
-                <div class="ammo"><div class="check"></div></div>
+                <div class="cat1"><div class="check"></div></div>
+                <div class="cat2"><div class="check"></div></div>
+                <div class="cat3"><div class="check"></div></div>
                 <div class="label">Imports</div><br class="clear">
             </div>
             <div class="exports imex">
-                <div class="mil"><div class="check"></div></div>
-                <div class="civ"><div class="check"></div></div>
-                <div class="ammo"><div class="check"></div></div>
+                <div class="cat1"><div class="check"></div></div>
+                <div class="cat2"><div class="check"></div></div>
+                <div class="cat3"><div class="check"></div></div>
                 <div class="label">Exports</div><br class="clear">
             </div>
             <br class="clear" />
@@ -211,16 +211,36 @@
         <div id="aboutContainer" class='overlayCountries'>
             <div class="arrowUp"></div>
             <div id="aboutBox">
-                <div class="title">Information about the data</div>
+                <div class="title">Information about The Handa Foundation</div>
                 <div class="text">
-                    This data visualization was produced by Google as part of the <a href="http://www.google.com/ideas" target="_blank">Google Ideas</a> INFO (Illicit Networks, Forces in Opposition) Summit with support from the <a href="http://igarape.org.br/" target="_blank">Igarape Institute</a> and data provided by the <a href="http://www.prio.no/" target="_blank">Peace Research Institute Oslo (PRIO)</a> small arms database. The visualization includes >1 million individual import and export data points from annual custom reports and maps the transfer of small arms, light weapons and ammunition across 250 nation states and territories around the world between 1992 and 2010.
+                    For the past 20 years Dr. Handa, through various organizations that he leads, has been generously supporting the development of Cambodia and it's recovery from decades of war. This support has included the formation and development of the University of Cambodia, the Sihanouk Hospital Center of HOPE, the Future Light Orphanage of World Mate, the South East Asia Television Station, various programs of the Cambodian Red Cross, and several other important initiatives. 
                 </div>
                 <div class="links">
                 	<br>
-                    For more info, please see the <a href="http://igarape.org.br/armsglobe" target="_blank">FAQs</a>.
+                    For more info, please see the <a href="http://www.thehandafoundation.org" target="_blank">FAQs</a>.
                 </div>
             </div>
         </div>
+
+        <div id="countryContainer" class='overlayCountries'>
+            <div class="arrowUp"></div>
+            <div id="countryBox">
+                <div class="title" id="countryBoxTitle">Information about Country</div>
+                <div class="text">Subject of the contract:</div>
+                <div class="text" id="countryBoxProjectName">none</div>
+                <div class="text">Exported:</div>
+                <div class="text" id="countryBoxExport">none</div>
+                <div class="text">Imported:</div>
+                <div class="text" id="countryBoxImport">none</div>
+                <div class="text">Category:</div>
+                <div class="text" id="countryBoxCategory">none</div>
+                <div class="links" id="countryBoxLinks">
+                    <br>
+                    For more info, please see the <a href="http://www.thehandafoundation.org" target="_blank">FAQs</a>.
+                </div>
+            </div>
+        </div>
+
     </div>
 	</body>
 </html>

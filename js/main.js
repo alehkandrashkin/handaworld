@@ -57,9 +57,9 @@ var selectableCountries = [];
 //	now they are just strings of categories
 //	Category Name : Category Code
 var weaponLookup = {
-	'Military Weapons' 		: 'mil',
-	'Civilian Weapons'		: 'civ',
-	'Ammunition'			: 'ammo',
+	'Cat1' 		: 'cat1',
+	'Cat2'		: 'cat2',
+	'Cat3'		: 'cat3'
 };
 
 //	a list of the reverse for easy lookup
@@ -72,9 +72,9 @@ for( var i in weaponLookup ){
 
 //	A list of category colors
 var categoryColors = {
-	'mil' : 0xdd380c,
-	'civ' : 0x3dba00,
-	'ammo' : 0x154492,
+	'cat1' : 0xdd380c,
+	'cat2' : 0x3dba00,
+	'cat3' : 0x154492,
 }
 
 var exportColor = 0xdd380c;
@@ -133,7 +133,7 @@ function start( e ){
 
 var Selection = function(){
 	this.selectedYear = '2010';
-	this.selectedCountry = 'UNITED STATES';
+	this.selectedCountry = 'JAPAN';
 	// this.showExports = true;
 	// this.showImports = true;
 	// this.importExportFilter = 'both';
@@ -292,7 +292,7 @@ function initScene() {
 
 	buildGUI();
 
-	selectVisualization( timeBins, '2010', ['UNITED STATES'], ['Military Weapons','Civilian Weapons', 'Ammunition'], ['Military Weapons','Civilian Weapons', 'Ammunition'] );					
+	selectVisualization( timeBins, '2010', ['JAPAN'], ['Cat1','Cat2', 'Cat3'], ['Cat1','Cat2', 'Cat3'] );
 
 		// test for highlighting specific countries
 	// highlightCountry( ["United States", "Switzerland", "China"] );
@@ -518,10 +518,11 @@ function getHistoricalData( country ){
 
 	for( var i in timeBins ){
 		var yearBin = timeBins[i].data;		
-		var value = {imports: 0, exports:0};
+		var value = {imports: 0, exports:0, name:"", categoryName:""};
 		for( var s in yearBin ){
 			var set = yearBin[s];
 			var categoryName = reverseWeaponLookup[set.wc];
+			var projectName = set.name;
 
 			var exporterCountryName = set.e.toUpperCase();
 			var importerCountryName = set.i.toUpperCase();			
@@ -539,6 +540,9 @@ function getHistoricalData( country ){
 				value.exports += set.v;
 			if( importerCountryName == countryName )
 				value.imports += set.v;
+
+			value.name = projectName;
+			value.categoryName = categoryName;
 		}
 		history.push(value);
 	}

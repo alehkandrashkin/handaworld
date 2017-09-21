@@ -65,8 +65,8 @@ function onClick( event ){
 			// console.log("converts to " + countryName);
 			if( countryName === undefined )
 				return;			
-			if( $.inArray(countryName, selectableCountries) <= -1 )
-				return;
+			//if( $.inArray(countryName, selectableCountries) <= -1 )
+			//	return;
 			// console.log(countryName);
 			var selection = selectionData;
 			selection.selectedCountry = countryName;

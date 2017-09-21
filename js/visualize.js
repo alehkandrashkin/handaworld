@@ -310,8 +310,11 @@ function selectVisualization( linearData, year, countries, exportCategories, imp
 
 	//	clear markers
 	for( var i in selectableCountries ){
-		removeMarkerFromCountry( selectableCountries[i] );
+		removeMarkerFromCountry(selectableCountries[i]);
 	}
+
+	if( previouslySelectedCountry != null)
+		removeMarkerFromCountry( previouslySelectedCountry.countryName );
 
 	//	clear children
 	while( visualizationMesh.children.length > 0 ){
@@ -373,4 +376,5 @@ function selectVisualization( linearData, year, countries, exportCategories, imp
 	}
     
     d3Graphs.initGraphs();
+
 }
